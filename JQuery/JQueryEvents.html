@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>JqueryCC | Eventos</title>
+</head>
+
+<style>
+
+    body{
+        background-color: burlywood;
+        font-size: 17px;
+        font-family: Verdana, sans-serif;
+        line-height: 1.5em;
+    }
+
+    header{
+        background-color: beige;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px #000 solid;
+        margin-bottom: 10px;
+    }
+
+    #container {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+    }
+
+</style>
+
+<body>
+
+    <header>
+        <h1>JQuery Crash Course | Events</h1>
+    </header>
+
+    <div id="container">
+        <h1>Mouse Events</h1>
+        <button id="btn1">Button 1</button>
+        <button id="btn2">Button 2</button>
+        <p class="para1"> Just some aleatory text dont mind me, im doing <span>nothing</span> here, for real</p>
+        <h1 id="coords"></h1>
+
+        <hr>
+        <form>
+            <label>Nome</label><br>
+            <input type="text id" id="name">
+            <br>
+            <label>Gender</label>
+            <select name="gender" id="gender"></select>
+                <option value="male">Male</option>
+                <option value="female">Gemale</option>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function(){ // ready vai fazer com que o que tem dentro da função seja executado após a página carregar por completo
+        /*
+            $('#btn1').click(function(){
+                alert('Button Clicked!')
+            })
+
+            $('#btn2').on('click', function(){
+                alert('Button Clicked!')
+            })
+        */ 
+        /*
+            $('#btn1').on('click', function(){
+                $('.para1').hide()
+            })
+            $('#btn2').on('click', function(){
+                $('.para1').show()
+            })
+
+            $('#btn1').on('click', function(){
+                $('.para1').toggle()            //toggle faz com que o conteúdo apareça e suma clicando no mesmo botão
+            })
+        */
+        /*
+            $('#btn1').dblclick(function(){ // dblclick = clicando 2 vezes
+                $('.para1').toggle()
+            })
+
+            $('#btn1').hover(function(){ // hover combina mouseEnter e mouseLeave
+                $('.para1').toggle()
+            })
+        
+            $('#btn1').on('mousemove', function(){
+                $('.para1').toggle()
+            })
+        */ 
+        /*
+            $('#btn1').on('mousedown', function(){
+                $('.para1').toggle()
+            })
+            $('#btn1').on('mouseup', function(){
+                $('.para1').toggle()
+            })
+        */ 
+        /*
+            $('#btn1').click(function(e){
+                console.log(e)
+                console.log(e.currentTarget.id)
+                console.log(e.currentTarget.innerHTML)
+                
+            })
+        */ 
+            $(document).on('mousemove', function(e){
+                $('#coords').html('Coords: Y: '+e.clientY+"X: "+e.clientX)
+            })
+
+            $('input').focus(function(){
+                //alert('Focus')
+                $(this).css('background','pink') //this vai se referir ao elemento em que já está
+            })
+            $('input').blur(function(){
+                //alert('Focus')
+                $(this).css('background','white') 
+            })
+            $('input').keyup(function(e){  // keyup vai determinar quando uma tecla sobe, após ser pressuinada
+                console.log(e.target.value)
+            })
+            $('select#gender').change(function(){ // change vai detectar quando um determinado elemento muda
+                alert('Changed!')
+            })
+            
+        })
+        
+    </script>
+
+</body>
+
+</html>
